@@ -6,10 +6,7 @@ import OnePost from "./components/Project";
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <Route component={AllPosts} path="/" exact />
-        <Route component={OnePost} path="/:slug" />
-      </div>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
     </BrowserRouter>
   );
 }
