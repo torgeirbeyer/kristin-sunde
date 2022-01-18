@@ -16,8 +16,8 @@ render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="projects" element={<AllProjects />}>
+        <Route path="information" element={<About />} />
+        <Route path="work" element={<AllProjects />}>
           <Route path=":slug" element={<Project />} />
         </Route>
       </Route>
