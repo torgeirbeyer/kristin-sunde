@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import sanityClient from "./client";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import SanityBlockContent from "@sanity/block-content-to-react";
 
 function App() {
+  const [fastPitch, setFastPitch] = useState(null);
+  const query = "*[_type == 'about'] {description}";
+
+  useEffect(() => {
+    sanityClient
+      .fetch(query)
+      .then(data => setFastPitch(data))
+      .catch(console.error);
+  }, []);
+
+  const { description } = fastPitch ? fastPitch[0] : [];
+
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
@@ -33,6 +47,12 @@ function App() {
                   WORK
                 </Link>
               </nav>
+              {splitLocation[1] === "information" && description && (
+                <SanityBlockContent
+                  className="pt-16 overflow-hidden"
+                  blocks={description}
+                />
+              )}
             </div>
           </aside>
           <main role="main" className="w-full sm:w-2/3 md:w-3/4 px-2">
