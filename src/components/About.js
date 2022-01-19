@@ -12,9 +12,6 @@ export default function About() {
   );
   if (!aboutData) return <p>Loading...</p>;
 
-  aboutData?.map((el, i) => {
-    console.log(el.text);
-  });
   return (
     <>
       {aboutData?.map((el, i) => {

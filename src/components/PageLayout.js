@@ -12,7 +12,7 @@ function App() {
   const { data: description } = useQuery("fastPitch", () =>
     sanity.fetch(aboutQuery)
   );
-  description?.map(item => console.log(item));
+
   const { data: projectList } = useQuery("projectList", () =>
     sanity.fetch(projectQuery)
   );
@@ -60,12 +60,12 @@ function App() {
                 <div className="pt-4 sm:pt-16 overflow-hidden">
                   {splitLocation[1] === "work" &&
                     projectList &&
-                    projectList.map(category => (
+                    projectList.map(({ _id, title, projects }) => (
                       <>
-                        <h3 className="font-bold" key={category._id}>
-                          {category.title}
+                        <h3 className="font-bold" key={_id}>
+                          {title}
                         </h3>
-                        {category.projects.map(project => {
+                        {projects.map(project => {
                           return (
                             <Link
                               key={project._id}
@@ -76,11 +76,6 @@ function App() {
                           );
                         })}
                       </>
-                      // projects.map(({ _id, slug, title }) => (
-                      //   <a key={_id} href={slug.current}>
-                      //     {title}
-                      //   </a>
-                      // ))
                     ))}
                 </div>
               )}
