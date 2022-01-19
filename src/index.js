@@ -1,32 +1,40 @@
-import React from "react";
+import "modern-css-reset";
 import "./index.css";
-import { render } from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { persistQueryClient } from "react-query/persistQueryClient-experimental";
+import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 import App from "./App";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AllProjects from "./components/AllProjects";
-import Project from "./components/Project";
-import About from "./components/About";
-import Home from "./components/Home";
 import reportWebVitals from "./reportWebVitals";
 
-const rootElement = document.getElementById("root");
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 0, // 24 hours
+    },
+  },
+});
 
-render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
-        <Route path="information" element={<About />} />
-        <Route path="work" element={<AllProjects />}>
-          <Route path=":slug" element={<Project />} />
-        </Route>
-      </Route>
-    </Routes>
-  </BrowserRouter>,
-  rootElement
+const localStoragePersistor = createWebStoragePersistor({
+  storage: window.localStorage,
+});
+
+persistQueryClient({
+  queryClient,
+  persistor: localStoragePersistor,
+});
+
+ReactDOM.render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

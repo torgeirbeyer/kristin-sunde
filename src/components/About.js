@@ -1,27 +1,27 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
-import sanityClient from "../client";
-import SanityBlockContent from "@sanity/block-content-to-react";
+import React from "react";
+import { useQuery } from "react-query";
+import { sanity } from "../client";
+import BlockContent from "@sanity/block-content-to-react";
 
 const query = "*[_type == 'about'] {title, description, text}";
 
 export default function About() {
-  const [aboutData, setAboutData] = useState(null);
+  const { data: aboutData } = useQuery("aboutPageQery", () =>
+    sanity.fetch(query)
+  );
+  if (!aboutData) return <p>Loading...</p>;
 
-  useEffect(() => {
-    sanityClient
-      .fetch(query)
-      .then(data => setAboutData(data))
-      .catch(console.error);
-  }, []);
-
+  aboutData?.map((el, i) => {
+    console.log(el.text);
+  });
   return (
     <>
       {aboutData?.map((el, i) => {
         return (
           <div key={i}>
             <h1>{el.title}</h1>
-            <SanityBlockContent blocks={el.text} />
+            <BlockContent blocks={el.text} />
           </div>
         );
       })}
