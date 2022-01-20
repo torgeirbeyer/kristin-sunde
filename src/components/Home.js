@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <div className="relative flex h-screen overflow-hidden">
-      <div className="container mx-auto sm:ml-16 sticky top-0 p-4 w-full sm:w-1/3 md:w-1/4 z-30">
+      <div className="container-xl sm:ml-2 sm:mt-2 sticky top-0 p-4 w-full sm:w-1/3 md:w-1/4 z-30">
         <nav className="flex flex-row justify-between sm:flex-col ">
           <Link className="bg-white text-green" to="/">
             KRISTIN SUNDE
