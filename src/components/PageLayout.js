@@ -29,11 +29,11 @@ function App() {
           <aside className="w-full sm:h-screen sm:w-1/3 md:w-1/4 border-black border-b sm:border-b-0 sm:border-r px-2">
             <div className="sticky top-0 p-4 w-full">
               <nav className="flex flex-row justify-between sm:flex-col overflow-hidden">
-                <Link className="hover:bg-white text-green" to="/">
+                <Link className="hover:bg-white text-darkGreen" to="/">
                   KRISTIN SUNDE
                 </Link>
                 <Link
-                  className={`hover:bg-white text-green ${
+                  className={`hover:bg-white text-darkGreen ${
                     splitLocation[1] === "information" ? "bg-white" : ""
                   }`}
                   to="information"
@@ -41,7 +41,7 @@ function App() {
                   INFORMATION
                 </Link>
                 <Link
-                  className={`hover:bg-white text-green ${
+                  className={`hover:bg-white text-darkGreen ${
                     splitLocation[1] === "work" ? "bg-white" : ""
                   }`}
                   to="work"
