@@ -26,7 +26,7 @@ function App() {
     <div className="bg-eggwhite h-screen">
       <div className="container-xl mx-auto">
         <div className="flex flex-row flex-wrap">
-          <aside className="w-full sm:h-screen sm:w-1/3 md:w-1/4 border-black border-b sm:border-b-0 sm:border-r px-2">
+          <aside className="w-full sm:h-screen sm:w-1/3 md:w-1/4 border-gray-300 border-b sm:border-b-0 sm:border-r px-2">
             <div className="sticky top-0 p-4 w-full">
               <nav className="flex flex-row justify-between sm:flex-col overflow-hidden">
                 <Link className="hover:bg-white text-darkGreen" to="/">
@@ -62,19 +62,22 @@ function App() {
                     projectList &&
                     projectList.map(({ _id, title, projects }) => (
                       <>
-                        <h3 className="font-bold" key={_id}>
-                          {title}
-                        </h3>
-                        {projects.map(project => {
-                          return (
-                            <Link
-                              key={project._id}
-                              to={`work/${project.slug.current}`}
-                            >
-                              {project.title}
-                            </Link>
-                          );
-                        })}
+                        <div className="mb-4">
+                          <h3 className="font-bold uppercase" key={_id}>
+                            {title}
+                          </h3>
+                          <ul>
+                            {projects.map(project => {
+                              return (
+                                <li className="pb-0.5" key={project._id}>
+                                  <Link to={`work/${project.slug.current}`}>
+                                    {project.title}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
                       </>
                     ))}
                 </div>
