@@ -18,16 +18,10 @@ function Home() {
           <Link className="bg-white text-darkGreen" to="/">
             KRISTIN SUNDE
           </Link>
-          <Link
-            className="hover:bg-transparent bg-white text-darkGreen"
-            to="information"
-          >
+          <Link className="hover:bg-transparent bg-white text-darkGreen" to="/">
             INFORMATION
           </Link>
-          <Link
-            className="hover:bg-transparent bg-white text-darkGreen"
-            to="work"
-          >
+          <Link className="hover:bg-transparent bg-white text-darkGreen" to="/">
             WORK
           </Link>
         </nav>
