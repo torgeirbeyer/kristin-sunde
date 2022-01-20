@@ -24,25 +24,25 @@ function App() {
   if (!description && !projectList) return <p>Loading...</p>;
   return (
     <div className="bg-eggwhite h-screen">
-      <div className="container mx-auto">
-        <div className="flex flex-row flex-wrap pb-4">
+      <div className="container-xl mx-auto">
+        <div className="flex flex-row flex-wrap">
           <aside className="w-full sm:h-screen sm:w-1/3 md:w-1/4 border-black border-b sm:border-b-0 sm:border-r px-2">
             <div className="sticky top-0 p-4 w-full">
               <nav className="flex flex-row justify-between sm:flex-col overflow-hidden">
-                <Link className="hover:bg-green" to="/">
+                <Link className="hover:bg-white text-green" to="/">
                   KRISTIN SUNDE
                 </Link>
                 <Link
-                  className={`hover:bg-green ${
-                    splitLocation[1] === "information" ? "bg-green" : ""
+                  className={`hover:bg-white text-green ${
+                    splitLocation[1] === "information" ? "bg-white" : ""
                   }`}
                   to="information"
                 >
                   INFORMATION
                 </Link>
                 <Link
-                  className={`hover:bg-green ${
-                    splitLocation[1] === "work" ? "bg-green" : ""
+                  className={`hover:bg-white text-green ${
+                    splitLocation[1] === "work" ? "bg-white" : ""
                   }`}
                   to="work"
                 >
@@ -51,13 +51,13 @@ function App() {
               </nav>
               {splitLocation[1] === "information" &&
                 description?.map((el, i) => (
-                  <div key={i} className="pt-4 sm:pt-16 overflow-hidden">
+                  <div key={i} className="pt-4 sm:pt-64 overflow-hidden">
                     <SanityBlockContent blocks={el.description} />
                   </div>
                 ))}
 
               {projectList && (
-                <div className="pt-4 sm:pt-16 overflow-hidden">
+                <div className="pt-4 sm:pt-64 overflow-hidden">
                   {splitLocation[1] === "work" &&
                     projectList &&
                     projectList.map(({ _id, title, projects }) => (

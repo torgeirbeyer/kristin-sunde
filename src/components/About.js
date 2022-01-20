@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { sanity } from "../client";
 import BlockContent from "@sanity/block-content-to-react";
 
-const query = "*[_type == 'about'] {title, description, text}";
+const query = "*[_type == 'about'] {text[]{...,asset->{...,'_key': _id}}}";
 
 export default function About() {
   const { data: aboutData } = useQuery("aboutPageQery", () =>
@@ -17,7 +17,6 @@ export default function About() {
       {aboutData?.map((el, i) => {
         return (
           <div key={i}>
-            <h1>{el.title}</h1>
             <BlockContent blocks={el.text} />
           </div>
         );
