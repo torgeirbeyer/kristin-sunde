@@ -32,7 +32,7 @@ function Home() {
           autoPlay
           loop
           muted
-          className="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+          className="absolute z-10 w-auto min-w-full min-h-full max-w-none top-50 left-50 transform -translate-x-2/4 -translate-y-2/4"
         >
           <source src={backgroundVideo.asset.url} type="video/mp4" />
           Your browser does not support the video tag.

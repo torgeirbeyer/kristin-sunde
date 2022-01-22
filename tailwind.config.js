@@ -17,6 +17,9 @@ module.exports = {
         "black": "#000000",
         "darkGreen": "#315e26",
       },
+      spacing: {
+        "50": "50%",
+      }
     },
   },
   plugins: [],
