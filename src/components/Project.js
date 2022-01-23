@@ -3,19 +3,20 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { sanity } from "../client";
 import SanityBlockContent from "@sanity/block-content-to-react";
-import { useState } from "react/cjs/react.development";
+// import { useState } from "react/cjs/react.development";
 
 export default function Project() {
   const { slug } = useParams();
-  const [open, setOpen] = useState(0);
+  // const [open, setOpen] = useState(0);
+  function setOpen(boo) {
+    console.log("click", { boo });
+  }
 
   const query =
     "*[slug.current == $slug]{title,details,images[]{...,asset->{...,'_key':_id}}}";
   const { data: projectData } = useQuery(`${slug}Query`, () =>
     sanity.fetch(query, { slug })
   );
-
-  console.log({ projectData });
 
   if (!projectData) return <pre>getting project data</pre>;
   return (
