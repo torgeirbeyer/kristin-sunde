@@ -35,7 +35,8 @@ function Home() {
       {homepage.map(({ backgroundVideo }) => (
         <video
           key={backgroundVideo.asset._id}
-          autoPlay
+          autoPlay={"autoplay"}
+          preLoad="auto"
           playsinline
           loop
           muted
