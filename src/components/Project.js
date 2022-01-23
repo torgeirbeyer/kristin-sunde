@@ -7,7 +7,7 @@ import { useState } from "react/cjs/react.development";
 
 export default function Project() {
   const { slug } = useParams();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(0);
 
   const query =
     "*[slug.current == $slug]{title,details,images[]{...,asset->{...,'_key':_id}}}";
