@@ -6,7 +6,7 @@ import SanityBlockContent from "@sanity/block-content-to-react";
 
 const aboutQuery = "*[_type == 'about'] {description}";
 const projectQuery =
-  "*[_type == 'category']{_id, title, 'projects': *[_type == 'project' && references(^._id)]{title,slug,_id}}";
+  "*[_type == 'category']{_id, title, 'projects': *[_type == 'project' && references(^._id)] | order(date desc) {title,slug,_id}}";
 
 function App() {
   const { data: description } = useQuery("fastPitch", () =>
@@ -20,13 +20,14 @@ function App() {
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
+  console.log(projectList);
 
   if (!description && !projectList) return <p>Loading...</p>;
   return (
-    <div className="bg-eggwhite h-screen">
+    <div className="bg-eggwhite min-h-screen">
       <div className="container-xl mx-auto">
         <div className="flex flex-row flex-wrap">
-          <aside className="w-full sm:h-screen sm:w-1/3 md:w-1/4 border-gray-300 border-b sm:border-b-0 sm:border-r px-2">
+          <aside className="w-full sm:min-h-screen sm:w-1/3 md:w-1/4 border-gray-300 border-b sm:border-b-0 sm:border-r px-2">
             <div className="sticky top-0 p-4 w-full">
               <nav className="flex flex-row justify-between sm:flex-col overflow-hidden">
                 <Link className="hover:bg-white text-darkGreen" to="/">
@@ -67,15 +68,20 @@ function App() {
                             {title}
                           </h3>
                           <ul>
-                            {projects.map(project => {
-                              return (
-                                <li className="pb-0.5" key={project._id}>
-                                  <Link to={`work/${project.slug.current}`}>
-                                    {project.title}
-                                  </Link>
-                                </li>
-                              );
-                            })}
+                            {projects.map(project => (
+                              <li
+                                className={`pb-0.5 ${
+                                  splitLocation[2] === project.slug.current
+                                    ? "bg-white"
+                                    : ""
+                                }`}
+                                key={project._id}
+                              >
+                                <Link to={`work/${project.slug.current}`}>
+                                  {project.title}
+                                </Link>
+                              </li>
+                            ))}
                           </ul>
                         </div>
                       </>
