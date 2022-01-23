@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { sanity } from "../client";
 import SanityBlockContent from "@sanity/block-content-to-react";
-// import { useState } from "react/cjs/react.development";
 
 export default function Project() {
   const { slug } = useParams();
-  // const [open, setOpen] = useState(0);
-  function setOpen(boo) {
-    console.log("click", { boo });
-  }
+  const [open, setOpen] = useState(0);
 
   const query =
     "*[slug.current == $slug]{title,details,images[]{...,asset->{...,'_key':_id}}}";
