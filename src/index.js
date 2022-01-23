@@ -12,7 +12,7 @@ import reportWebVitals from "./reportWebVitals";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 0, // 24 hours
+      cacheTime: 60 * 60 * 24, // 24 hours
     },
   },
 });

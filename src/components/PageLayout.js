@@ -20,7 +20,6 @@ function App() {
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
-  console.log(projectList);
 
   if (!description && !projectList) return <p>Loading...</p>;
   return (
@@ -28,7 +27,7 @@ function App() {
       <div className="container-xl mx-auto">
         <div className="flex flex-row flex-wrap">
           <aside className="w-full sm:min-h-screen sm:w-1/3 md:w-1/4 border-gray-300 border-b sm:border-b-0 sm:border-r px-2">
-            <div className="sticky top-0 p-4 w-full">
+            <div className="sticky top-0 py-4 px-8 w-full">
               <nav className="flex flex-row justify-between sm:flex-col overflow-hidden">
                 <Link className="hover:bg-white text-darkGreen" to="/">
                   KRISTIN SUNDE
@@ -91,7 +90,7 @@ function App() {
             </div>
           </aside>
           <main role="main" className="w-full sm:w-2/3 md:w-3/4 px-2">
-            <div className="content p-4">
+            <div className="content py-4 px-8">
               <Outlet />
             </div>
           </main>

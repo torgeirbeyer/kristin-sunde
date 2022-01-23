@@ -35,10 +35,11 @@ function Home() {
       {homepage.map(({ backgroundVideo }) => (
         <video
           key={backgroundVideo.asset._id}
-          autoPlay={"autoplay"}
-          preload="auto"
+          autoPlay={true}
           playsInline
+          preload="auto"
           loop
+          controls={true}
           muted
           className="absolute z-10 w-auto min-w-full min-h-full max-w-none top-50 left-50 transform -translate-x-2/4 -translate-y-2/4"
         >

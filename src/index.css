@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-2xl font-bold pt-4
+  }
+  h2 {
+    @apply text-xl font-bold pt-4
+  }
+  h3 {
+    @apply text-lg font-bold pt-4
+  }
+  h4 {
+    @apply text-base font-bold pt-4
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
