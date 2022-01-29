@@ -42,7 +42,6 @@ const Image = props => {
     lazy = "true",
   } = props.image;
 
-  console.log(props.image);
   const showImage = lazy === "false" || !!inView;
   const orgWidth = get(image, "metadata.dimensions.width");
   const orgHeight = get(image, "metadata.dimensions.height");
@@ -63,9 +62,7 @@ const Image = props => {
   const height = aspectRatio ? Math.round(width / aspectRatio) : null;
 
   const computedSrc = urlFor(image).width(width).height(height).fit(fit).url();
-  console.log({ computedSrc });
   const bg = get(image, "metadata.palette.dominant.background");
-  // const lqip = get(image, "metadata.lqip");
 
   return (
     <div
@@ -74,12 +71,6 @@ const Image = props => {
       style={{
         paddingBottom: aspectRatio ? `${100 / aspectRatio}%` : undefined,
       }}
-      // style={{
-      //   backgroundSize: "100% 100%",
-      // }}
-      // className={`block relative ${
-      //   !!aspect && "absolute top-0 left-0 h-full z-0"
-      // }`}
     >
       <div
         ref={inViewRef}
@@ -94,15 +85,6 @@ const Image = props => {
           backgroundImage: !isLoaded && lqip && `url(${lqip})`,
           backgroundSize: "100% 100%",
         }}
-        // className={
-        //   "w-full h-full opacity-100 transform transition-opacity duration-300 ease-in-out"
-        // }
-        // style={{
-        //   backgroundColor: bg,
-        //   backgroundImage: lqip && `url(${lqip})`,
-        //   imageRendering: "pixelated",
-        //   // paddingTop: `calc(100% / ${aspect})`,
-        // }}
       >
         <img
           className={`block w-full ${
@@ -113,15 +95,9 @@ const Image = props => {
           srcSet={showImage && !url ? defaultSrcSet : undefined}
           sizes={sizes}
           src={showImage ? url || computedSrc : undefined}
-          // className={"w-full block"}
-          // style={{
-          //   imageRendering: "pixelated",
-          //   opacity: isLoaded ? 1 : 0,
-          // }}
           width={width}
           height={height}
           onLoad={() => setLoaded(true)}
-          // style={{ opacity: isLoaded ? 1 : 0 }}
         />
       </div>
     </div>
