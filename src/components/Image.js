@@ -42,6 +42,7 @@ const Image = props => {
     lazy = "true",
   } = props.image;
 
+  console.log(props.image);
   const showImage = lazy === "false" || !!inView;
   const orgWidth = get(image, "metadata.dimensions.width");
   const orgHeight = get(image, "metadata.dimensions.height");
@@ -62,7 +63,7 @@ const Image = props => {
   const height = aspectRatio ? Math.round(width / aspectRatio) : null;
 
   const computedSrc = urlFor(image).width(width).height(height).fit(fit).url();
-
+  console.log({ computedSrc });
   const bg = get(image, "metadata.palette.dominant.background");
   // const lqip = get(image, "metadata.lqip");
 
