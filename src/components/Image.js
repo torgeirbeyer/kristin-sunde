@@ -76,9 +76,9 @@ const Image = props => {
         ref={inViewRef}
         data-is-loaded={isLoaded}
         aria-hidden="true"
-        className={`w-full opacity-100 transform transition-opacity duration-100  ease-out ${
+        className={`w-full transform transition-opacity duration-500 ease-out ${
           aspectRatio ? "block absolute top-0 left-0 h-full z-0" : ""
-        }`}
+        } ${isLoaded ? "opacity-100" : "opacity-0"}`}
         style={{
           imageRendering: "pixelated",
           backgroundColor: !isLoaded && bg,
