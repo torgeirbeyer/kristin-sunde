@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { persistQueryClient } from "react-query/persistQueryClient-experimental";
 import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 import App from "./App";
+import ScrollToTop from "./components/ScrollToTop";
 import reportWebVitals from "./reportWebVitals";
 
 const queryClient = new QueryClient({
@@ -30,6 +31,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <App />
       </BrowserRouter>
     </QueryClientProvider>

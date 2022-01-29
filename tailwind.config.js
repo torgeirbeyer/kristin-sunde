@@ -22,5 +22,8 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  _plugins: [
+    // eslint-disable-next-line no-undef
+    require("tailwindcss-image-rendering")()
+  ],
 };
