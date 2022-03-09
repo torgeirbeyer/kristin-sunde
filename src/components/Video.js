@@ -1,27 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useInView } from "react-intersection-observer";
 
 const Video = props => {
-  const [inViewRef, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0,
-  });
-
-  const [isLoaded, setLoaded] = useState(0);
-
-  const imgRef = React.createRef();
-  useEffect(() => {
-    if (
-      imgRef &&
-      imgRef.current &&
-      imgRef.current.complete &&
-      imgRef.current.naturalWidth
-    ) {
-      setLoaded(true);
-    }
-  });
-
   const { url, video } = props.video;
   return (
     <div key={video._id} className={"block relative my-8"}>
