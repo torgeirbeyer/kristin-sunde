@@ -34,8 +34,8 @@ export default function Project() {
   );
 
   if (!projectData) return <pre>getting project data</pre>;
+
   const { _id, title, details, images } = projectData[0];
-  console.log({ images });
   return (
     <div key={_id}>
       <h3>{title}</h3>
