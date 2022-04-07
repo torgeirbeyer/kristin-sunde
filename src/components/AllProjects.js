@@ -13,9 +13,11 @@ function AllProjects() {
   if (!project) return <pre>loading...</pre>;
   const { slug } = project;
   const navigate = useNavigate();
-  useEffect(() => {
-    navigate(`/work/${slug.current}`);
-  });
+  if (project?.slug?.current) {
+    useEffect(() => {
+      navigate(`/work/${slug.current}`);
+    }, []);
+  }
   return (
     <>
       <pre>oooops</pre>
